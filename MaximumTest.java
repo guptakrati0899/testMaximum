@@ -1,12 +1,11 @@
 package testMaximum;
 
 public class MaximumTest{
-    Integer x,y,z;
-
-
 	
-
-	public MaximumTest(Integer x, Integer y, Integer z) {
+   
+	Double x,y,z;
+	
+	public MaximumTest(Double x, Double y, Double z) {
 		
 		this.x = x;
 		this.y = y;
@@ -14,15 +13,20 @@ public class MaximumTest{
 	}
 
 
-	public int maximum() {
+
+	
+
+
+
+	public double maximum() {
 	
 		return MaximumTest.maximum(x, y, z); 
 	}
 
 	
 	// determines the largest of three Integers
-	public static int maximum(Integer x, Integer y, Integer z) { 
-		Integer max = x; // assume x is initially the largest
+	public static double maximum(Double x, Double y, Double z) { 
+		Double max = x; // assume x is initially the largest
 	
 
 		if(y.compareTo(max) > 0) { 
@@ -40,20 +44,20 @@ public class MaximumTest{
 	}
 
 	
-	public static  void printMax(Integer x, Integer y, Integer z, Integer max) {
+	public static  void printMax(Double x, Double y, Double z, Double max) {
 		System.out.printf("Max of %s, %s and %s is %s\n",x, y, z, max);
 	}
 
 	public static void main(String args[]) {
 
-		Integer xInt=9, yInt = 4, zInt = 5;
+		Double xDouble=8.2, yDouble = 9.8, zDouble = 6.1;
 	
 		
 		// MaximumTest.testMaximum(xInt, yInt , zInt); 
 		
-		new MaximumTest(xInt, yInt, zInt).maximum(); //TC 1.1
-		new MaximumTest(yInt, xInt, zInt).maximum(); // TC 1.2
-		new MaximumTest(zInt, yInt, xInt).maximum(); // TC 1.3
+		new MaximumTest(yDouble, xDouble, zDouble).maximum(); //TC 1.1
+		new MaximumTest(xDouble, yDouble, zDouble).maximum(); // TC 1.2
+		new MaximumTest(zDouble, xDouble, yDouble).maximum(); // TC 1.3
 		
 		
 	}
