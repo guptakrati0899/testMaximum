@@ -1,19 +1,26 @@
 package testMaximum;
 
 
-public class MaximumTest{
+public class MaximumTest<T extends Comparable<T>> {
+	T x, y, z;
+
+
+	public MaximumTest(T x, T y, T z) {
 	
-   
-    public static <E> E maximum(E x, E y, E z) {
+		this.x = x;
+		this.y = y; 
+		this.z = z;
 	
-		
-		return MaximumTest.maximum(x,y,z); 
 	}
 
+	public T maximum() {
 	
-	// determines the largest of three Strings
-	public static  <E extends Comparable> E maximum (E x, E y, E z){ 
-		E max = x; // assume x is initially the largest
+		return MaximumTest.maximum(x, y, z); 
+	}
+
+	// determines the largest of three Comparable objects 
+	public static <T extends Comparable<T>> T maximum(T x, T y, T z) { 
+		T max = x; // assume x is initially the largest
 	
 
 		if(y.compareTo(max) > 0) { 
@@ -30,22 +37,47 @@ public class MaximumTest{
 		return max; // returns the largest object
 	}
 
+	public static String testMaximum (String x, String y, String z) {
 	
-	public static  <E extends Comparable>  void printMax(E x, E y, E z, E max) {
+		String max = x; 
+		if(y.compareTo(max) > 0) {
+		
+			max = y; //y is the largest so far
+		
+		} 
+		if(z.compareTo(max) > 0) {
+		
+			max = z; // z is the largest now
+		
+		}
+	
+		printMax(x, y, z, max); 
+		return max; // returns the largest object
+	}
+
+	public static <T> void printMax(T x, T y, T z, T max) {
 		System.out.printf("Max of %s, %s and %s is %s\n",x, y, z, max);
 	}
 
 	public static void main(String args[]) {
-		
-		Integer xInt= 3 , yInt = 2, zInt = 5;
-		Double  xDouble= 3.3 , yDouble = 2.5, zDouble = 5.1;
-		String xStr="pear", yStr = "apple", zStr = "mango";
+
+		Integer xInt=9, yInt = 4, zInt = 5;
 	
+		Float xF1=6.6f, yF1= 8.8f, zF1=7.7f;
 		
-		MaximumTest.maximum(xInt,yInt,zInt);
-		MaximumTest.maximum(xDouble,yDouble,zDouble);
-		MaximumTest.maximum(xStr,yStr,zStr);
+		String xStr="pear", yStr="apple", zStr = "orange"; 
+	
+	//	MaximumTest.testMaximum(xStr, yStr , zStr); 
+		new MaximumTest(xInt, yInt, zInt).maximum(); 
+		new MaximumTest(yInt, xInt, zInt).maximum(); 
+		new MaximumTest(xInt, yInt, xInt).maximum(); 
 		
+		new MaximumTest(yF1, xF1, zF1).maximum();
+		new MaximumTest(xF1, yF1, zF1).maximum();
+		new MaximumTest(xF1, zF1, yF1).maximum();
 		
+		new MaximumTest(xStr, yStr, zStr).maximum();
+		new MaximumTest(yStr, xStr, zStr).maximum();
+		new MaximumTest(zStr, yStr, xStr).maximum();
 	}
 }
