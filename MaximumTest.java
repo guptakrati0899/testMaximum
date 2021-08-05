@@ -3,9 +3,9 @@ package testMaximum;
 public class MaximumTest{
 	
    
-	Double x,y,z;
+	String x,y,z;
 	
-	public MaximumTest(Double x, Double y, Double z) {
+	public MaximumTest(String x, String y, String z) {
 		
 		this.x = x;
 		this.y = y;
@@ -18,15 +18,15 @@ public class MaximumTest{
 
 
 
-	public double maximum() {
+	public String maximum() {
 	
 		return MaximumTest.maximum(x, y, z); 
 	}
 
 	
-	// determines the largest of three Integers
-	public static double maximum(Double x, Double y, Double z) { 
-		Double max = x; // assume x is initially the largest
+	// determines the largest of three Strings
+	public static String maximum(String x, String y, String z) { 
+		String max = x; // assume x is initially the largest
 	
 
 		if(y.compareTo(max) > 0) { 
@@ -44,23 +44,21 @@ public class MaximumTest{
 	}
 
 	
-	public static  void printMax(Double x, Double y, Double z, Double max) {
+	public static  void printMax(String x, String y, String z, String max) {
 		System.out.printf("Max of %s, %s and %s is %s\n",x, y, z, max);
 	}
 
 	public static void main(String args[]) {
 
-		Double xDouble=8.2, yDouble = 9.8, zDouble = 6.1;
+		String xStr="pear", yStr = "apple", zStr = "mango";
 	
 		
 		// MaximumTest.testMaximum(xInt, yInt , zInt); 
 		
-		new MaximumTest(yDouble, xDouble, zDouble).maximum(); //TC 1.1
-		new MaximumTest(xDouble, yDouble, zDouble).maximum(); // TC 1.2
-		new MaximumTest(zDouble, xDouble, yDouble).maximum(); // TC 1.3
+		new MaximumTest(xStr,yStr,zStr).maximum(); //TC 3.1
+		new MaximumTest(yStr, xStr, zStr).maximum(); // TC 3.2
+		new MaximumTest(zStr, yStr, xStr).maximum(); // TC 3.3
 		
 		
 	}
 }
-
-
