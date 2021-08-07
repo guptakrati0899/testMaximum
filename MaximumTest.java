@@ -1,83 +1,102 @@
 package testMaximum;
 
+public class MaximumTest <N extends Comparable<N>> {
+	N X, Y, Z;
 
-public class MaximumTest<T extends Comparable<T>> {
-	T x, y, z;
-
-
-	public MaximumTest(T x, T y, T z) {
-	
-		this.x = x;
-		this.y = y; 
-		this.z = z;
-	
+	public MaximumTest (N X, N Y, N Z) {
+		this.X = X;
+		this.Y = Y;
+		this.Z = Z;
 	}
 
-	public T maximum() {
-	
-		return MaximumTest.maximum(x, y, z); 
+	public N Maximum () {
+		return  MaximumTest .maximum(X, Y, Z);
 	}
 
-	// determines the largest of three Comparable objects 
-	public static <T extends Comparable<T>> T maximum(T x, T y, T z) { 
-		T max = x; // assume x is initially the largest
+	// determines the largest integer from 3 Integres, Floats & Strings
+	public static <N extends Comparable<N>> N maximum(N X, N Y, N Z) { 
+		N max = X; // assume initially X is the largest integer
 	
-
-		if(y.compareTo(max) > 0) { 
-			max = y; //y is the largest so far
+		if(Y.compareTo(max) > 0) { 
+			max = Y; //y is the largest integer so far
 		}
 	
-		if(z.compareTo(max) > 0) {
+		if(Z.compareTo(max) > 0) {
 		
-			max = z; // z is the largest now
+			max = Z; // z is the largest integer now
 		}
 		
-		printMax(x, y, z, max);
-		
+		printMax(X, Y, Z, max);
 		return max; // returns the largest object
 	}
 
-	public static String testMaximum (String x, String y, String z) {
+	public static String testMaximum(String X, String Y, String Z) {
 	
-		String max = x; 
-		if(y.compareTo(max) > 0) {
+		String max = X; 
+		if(Y.compareTo(max) > 0) {
 		
-			max = y; //y is the largest so far
+			max = Y; //y is the largest so far
 		
 		} 
-		if(z.compareTo(max) > 0) {
+		if(Z.compareTo(max) > 0) {
 		
-			max = z; // z is the largest now
+			max = Z; // z is the largest now
 		
 		}
 	
-		printMax(x, y, z, max); 
+		printMax(X, Y, Z, max); 
 		return max; // returns the largest object
 	}
 
-	public static <T> void printMax(T x, T y, T z, T max) {
-		System.out.printf("Max of %s, %s and %s is %s\n",x, y, z, max);
+	public static <N extends Comparable> void printMax(N X, N Y, N Z, N max) {
+		System.out.printf("Maximum Integer From %s, %s and %s is %s\n",X, Y, Z, max);
 	}
 
 	public static void main(String args[]) {
 
-		Integer xInt=9, yInt = 4, zInt = 5;
-	
-		Float xF1=6.6f, yF1= 8.8f, zF1=7.7f;
+		Integer [] arr = {1, 2, 3, 4, 5, 245, 888, 963, 1024, 99, 100, 360};
+		int n = arr.length;
+		int swap;
+
+		Integer max = Integer.MIN_VALUE;
+
+		for (int i = 0; i < arr.length; i = i+3) {
+			for (int j = i; j < arr.length-1; j++) {
+
+				Integer value1 = arr[i];
+				Integer value2;
+				Integer value3;
+
+				if (arr[j].compareTo(arr[j+1]) < 0) {
+					swap = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = swap;
+				}
+            	if (n < n-1) {
+					value2 = arr[i + 1];
+				}
+				else {
+					value2 = Integer.MIN_VALUE;
+
+				}
+				if (n < n-2) {
+					value3 = arr[i + 2];
+				}
+				else {
+					value3 = Integer.MIN_VALUE;
+
+				}
+                // obj.maxMethod(value1, value2, value3);
+            
+            	Integer res = new  MaximumTest <Integer>(value1, value2, value3).Maximum();
+
+				if (res > max) {
+					res = max;
+					
+				}
+        	}
+		}
+
 		
-		String xStr="pear", yStr="apple", zStr = "orange"; 
-	
-	//	MaximumTest.testMaximum(xStr, yStr , zStr); 
-		new MaximumTest(xInt, yInt, zInt).maximum(); 
-		new MaximumTest(yInt, xInt, zInt).maximum(); 
-		new MaximumTest(xInt, yInt, xInt).maximum(); 
-		
-		new MaximumTest(yF1, xF1, zF1).maximum();
-		new MaximumTest(xF1, yF1, zF1).maximum();
-		new MaximumTest(xF1, zF1, yF1).maximum();
-		
-		new MaximumTest(xStr, yStr, zStr).maximum();
-		new MaximumTest(yStr, xStr, zStr).maximum();
-		new MaximumTest(zStr, yStr, xStr).maximum();
 	}
 }
